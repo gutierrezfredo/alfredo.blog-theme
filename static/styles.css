@@ -8,6 +8,7 @@
 	--secondary: #ABA39B;
 	--input-bg: #FFFFFF;
 	--input-border: #E6E6E6;
+	--input-radius: .5rem;
 	--border: #EEE;
 }
 
@@ -65,14 +66,14 @@ p a:hover {
 }
 /* Inputs */
 textarea,
-input {
+input:not([type="submit"]) {
 	min-height: 48px;
-	border-radius: .5rem;
+	border-radius: var(--input-radius);
 	background-color: var(--input-bg);
 	color: var(--body);
 	border: 2px solid var(--input-border);
 	padding: .5em 1em;
-	font-size: 1em;
+	font-size: 1em !important;
 	appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -93,6 +94,8 @@ input.field,
 	background-color: var(--input-bg) !important;
 	color: var(--body) !important;
 	border: 2px solid var(--input-border) !important;
+	border-radius: var(--input-radius) !important;
+	font-size: 1em !important;
 }
 input[type="submit"]:not(:disabled) {
 	cursor: pointer;
