@@ -246,7 +246,9 @@ nav.main-nav a:has(i):hover {
 	input,
 	input[type="text"],
 	input[type="email"],
-	input[type="search"] {
+	input[type="search"],
+	input.field,
+	#input_search {
 		background-color: var(--input) !important;
 		color: var(--body) !important;
 		border: 2px solid #3D3835 !important;
@@ -256,7 +258,9 @@ nav.main-nav a:has(i):hover {
 	input:focus,
 	input[type="text"]:focus,
 	input[type="email"]:focus,
-	input[type="search"]:focus {
+	input[type="search"]:focus,
+	input.field:focus,
+	#input_search:focus {
 		border-color: var(--primary) !important;
 	}
 }
