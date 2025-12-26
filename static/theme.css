@@ -231,8 +231,8 @@ nav.main-nav a:has(i):hover {
 		--headings: #F5F5F4;
 		--body: #D6D3D1;
 		--secondary: #78716C;
-		--input: #292524;
-		--border: #44403C;
+		--input: #252322;
+		--border: #332F2D;
 	}
 
 	nav.main-nav a:hover,
@@ -246,5 +246,11 @@ nav.main-nav a:has(i):hover {
 	input {
 		background-color: var(--input);
 		color: var(--body);
+		border-color: #363230;
+	}
+
+	textarea:focus,
+	input:focus {
+		border-color: var(--primary);
 	}
 }
