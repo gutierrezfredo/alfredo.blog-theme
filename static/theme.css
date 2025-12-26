@@ -224,8 +224,8 @@ nav.main-nav a:has(i):hover {
 -----------------------------------------*/
 @media (prefers-color-scheme: dark) {
 	:root {
-		--primary: #E07A5F;
-		--primary-hover: #F4A68E;
+		--primary: #C9634A;
+		--primary-hover: #E07A5F;
 		--primary-active: #C45A3F;
 		--background: #1A1918;
 		--headings: #F5F5F4;
