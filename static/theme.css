@@ -251,7 +251,7 @@ nav.main-nav a:has(i):hover {
 	#input_search {
 		background-color: var(--input) !important;
 		color: var(--body) !important;
-		border: 2px solid #3D3835 !important;
+		border: 2px solid #4A4543 !important;
 	}
 
 	input[type="submit"]:not(:disabled) {
