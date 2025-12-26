@@ -87,6 +87,13 @@ textarea:focus,
 input:focus {
 	border-color: var(--primary);
 }
+/* Override inline styles from search plugin */
+input.field,
+#input_search {
+	background-color: var(--input-bg) !important;
+	color: var(--body) !important;
+	border: 2px solid var(--input-border) !important;
+}
 input[type="submit"]:not(:disabled) {
 	cursor: pointer;
 	background-color: var(--primary);
