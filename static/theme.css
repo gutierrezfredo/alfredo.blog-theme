@@ -218,3 +218,33 @@ nav.main-nav a:has(i):hover {
 .social-media a:hover {
 	color: var(--primary-hover) !important;
 }
+
+
+/* Dark Mode
+-----------------------------------------*/
+@media (prefers-color-scheme: dark) {
+	:root {
+		--primary: #E07A5F;
+		--primary-hover: #F4A68E;
+		--primary-active: #C45A3F;
+		--background: #1A1918;
+		--headings: #F5F5F4;
+		--body: #D6D3D1;
+		--secondary: #78716C;
+		--input: #292524;
+		--border: #44403C;
+	}
+
+	nav.main-nav a:hover,
+	#footer a:hover,
+	#post-nav a:hover,
+	p a:hover {
+		color: var(--background);
+	}
+
+	textarea,
+	input {
+		background-color: var(--input);
+		color: var(--body);
+	}
+}
