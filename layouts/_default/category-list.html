@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article class="h-entry post">
+  <header>
+    <h1 class="p-name">{{ .Title }}</h1>
+  </header>
+</article>
+<ul id="post-list" class="h-feed">
+{{ $category := .Params.filter_category }}
+{{ $posts := where (where .Site.RegularPages "Type" "post") "Params.categories" "intersect" (slice $category) }}
+{{ range $posts.ByDate.Reverse }}
+	{{ partial "post-item.html" . }}
+{{ end }}
+</ul>
+{{ end }}

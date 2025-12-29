@@ -6,6 +6,11 @@
   <section id="wrapper" {{ with .File }}{{ if eq .Dir "about/" }} class="bio" {{ end }}{{ end }}>
 	{{ block "main" . }}{{ end }}
   </section>
+  {{ with .Site.GetPage "/social" }}
+  <div id="social-section">
+    {{ .Content }}
+  </div>
+  {{ end }}
   {{ partial "footer.html" . }}
   {{ partial "custom_footer.html" . }}
 		{{ range .Site.Params.plugins_js }}

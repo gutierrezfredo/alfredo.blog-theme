@@ -3,8 +3,8 @@
 	const html = document.documentElement;
 	let isAnimating = false;
 
-	const toDark = ['🌒', '🌓', '🌔', '🌕'];
-	const toLight = ['🌔', '🌓', '🌒', '🌑'];
+	const DARK_ICON = '🏙️';
+	const LIGHT_ICON = '🌆';
 
 	// Check for saved preference or system preference
 	function getPreferredTheme() {
@@ -13,42 +13,36 @@
 		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 	}
 
-	// Animate through moon phases
-	function animateToggle(phases, callback) {
-		isAnimating = true;
-		let i = 0;
-		const interval = setInterval(() => {
-			toggle.textContent = phases[i];
-			i++;
-			if (i >= phases.length) {
-				clearInterval(interval);
-				isAnimating = false;
-				if (callback) callback();
-			}
-		}, 100);
-	}
-
 	// Apply theme without animation
 	function setTheme(theme) {
 		html.setAttribute('data-theme', theme);
-		toggle.textContent = theme === 'dark' ? '🌕' : '🌑';
+		toggle.textContent = theme === 'dark' ? DARK_ICON : LIGHT_ICON;
 		localStorage.setItem('theme', theme);
+	}
+
+	// Fade transition
+	function fadeToggle(newTheme) {
+		isAnimating = true;
+		toggle.classList.add('fading');
+
+		setTimeout(() => {
+			html.setAttribute('data-theme', newTheme);
+			toggle.textContent = newTheme === 'dark' ? DARK_ICON : LIGHT_ICON;
+			localStorage.setItem('theme', newTheme);
+			toggle.classList.remove('fading');
+			isAnimating = false;
+		}, 200);
 	}
 
 	// Initialize
 	setTheme(getPreferredTheme());
 
-	// Toggle on click with animation
+	// Toggle on click with fade
 	toggle.addEventListener('click', () => {
 		if (isAnimating) return;
 		const current = html.getAttribute('data-theme');
 		const newTheme = current === 'dark' ? 'light' : 'dark';
-		const phases = newTheme === 'dark' ? toDark : toLight;
-
-		animateToggle(phases, () => {
-			html.setAttribute('data-theme', newTheme);
-			localStorage.setItem('theme', newTheme);
-		});
+		fadeToggle(newTheme);
 	});
 
 	// Listen for system preference changes
