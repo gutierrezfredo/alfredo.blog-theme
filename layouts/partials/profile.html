@@ -8,9 +8,13 @@
       {{ range $lines }}
         {{ $line := . | strings.TrimSpace }}
         {{ if hasPrefix $line "![" }}
-          <a class="u-url" href="/about/">{{ $line | markdownify }}</a>
+          {{ $imgUrl := replaceRE `!\[.*?\]\((.*?)\)` "$1" $line }}
+          <a class="u-url" href="/about/">
+            <img id="avatar" class="u-photo" src="{{ $imgUrl }}" />
+          </a>
         {{ else if hasPrefix $line "<h1>" }}
-          <h1 class="p-name" rel="me">{{ $line | safeHTML }}</h1>
+          {{ $name := replaceRE `<h1>(.*?)</h1>` "$1" $line }}
+          <h1 class="p-name" rel="me">{{ $name }}</h1>
         {{ else if hasPrefix $line "# " }}
           <h1 class="p-name" rel="me">{{ strings.TrimPrefix "# " $line }}</h1>
         {{ end }}

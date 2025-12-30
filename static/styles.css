@@ -220,12 +220,7 @@ nav.main-nav a:has(i):hover {
 /* Profile
 -----------------------------------------*/
 .profile #wrapper {
-    padding: 60px 0 20px;
-}
-@media screen and (max-width: 767px) {
-  .profile #wrapper {
-      padding: 40px 0 0;
-  }
+    padding: 4em 0 0;
 }
 .profile #avatar {
 	width: 104px;
@@ -240,7 +235,7 @@ nav.main-nav a:has(i):hover {
 /* Margin tops for content main wrapper 
 -----------------------------------------*/
 #wrapper {
-	margin-top: 40px;
+	margin-top: 3em;
 }
 .post {
     margin: 0;
