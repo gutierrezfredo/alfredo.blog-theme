@@ -6,7 +6,7 @@
       {{ $content := .RawContent }}
       {{ $lines := split $content "\n" }}
       {{ range $lines }}
-        {{ $line := . | strings.TrimSpace }}
+        {{ $line := trim . " \t\r\n" }}
         {{ if hasPrefix $line "![" }}
           {{ $imgUrl := replaceRE `!\[.*?\]\((.*?)\)` "$1" $line }}
           <a class="u-url" href="/about/">
@@ -16,7 +16,7 @@
           {{ $name := replaceRE `<h1>(.*?)</h1>` "$1" $line }}
           <h1 class="p-name" rel="me">{{ $name }}</h1>
         {{ else if hasPrefix $line "# " }}
-          <h1 class="p-name" rel="me">{{ strings.TrimPrefix "# " $line }}</h1>
+          <h1 class="p-name" rel="me">{{ replaceRE `^# ` "" $line }}</h1>
         {{ end }}
       {{ end }}
     </header>
