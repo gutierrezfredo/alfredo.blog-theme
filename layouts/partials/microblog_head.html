@@ -26,7 +26,19 @@
   <link rel="me" href="https://instagram.com/{{ . }}">
 {{ end }}
 
-<link rel="shortcut icon" href="https://micro.blog/{{ .Site.Params.author.username }}/favicon.png" type="image/x-icon">
+{{ $intro := .Site.GetPage "/intro" }}
+{{ $faviconUrl := printf "https://micro.blog/%s/favicon.png" .Site.Params.author.username }}
+{{ with $intro }}
+  {{ $content := .RawContent }}
+  {{ $lines := split $content "\n" }}
+  {{ range $lines }}
+    {{ $line := trim . " \t\r\n" }}
+    {{ if hasPrefix $line "![" }}
+      {{ $faviconUrl = replaceRE `!\[.*?\]\((.*?)\)` "$1" $line }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+<link rel="shortcut icon" href="{{ $faviconUrl }}" type="image/png">
 <link rel="EditURI" type="application/rsd+xml" href="{{ "rsd.xml" | absURL }}">
 <link rel="authorization_endpoint" href="https://micro.blog/indieauth/auth">
 <link rel="token_endpoint" href="https://micro.blog/indieauth/token">
